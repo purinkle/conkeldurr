@@ -1,0 +1,9 @@
+<dl>
+  <%= posts.each do |post| %>
+    <dt>Title</dt>
+    <dd><%= post.title %></dd>
+
+    <dt>Content</dt>
+    <dd><%= post.content %></dd>
+  <% end %>
+</dl>
