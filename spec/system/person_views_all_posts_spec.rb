@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Person views all posts" do
   it "is successful" do
-    Post.create(
-      title: "My awesome post",
-      content: "tl; dr"
+    post = Post.create(
+      title: Faker::Lorem.sentence,
+      content: Faker::Lorem.paragraph
     )
 
     visit "/posts"
 
-    expect(page).to have_text("My awesome post")
-    expect(page).to have_text("tl; dr")
+    expect(page).to have_text(post.title)
+    expect(page).to have_text(post.content)
   end
 end

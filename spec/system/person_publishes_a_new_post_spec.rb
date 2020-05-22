@@ -7,7 +7,7 @@ RSpec.describe "Person publishes a new post" do
     fill_in "Title", with: "My awesome post"
     fill_in "Content", with: "tl; dr"
 
-    click_button "Save"
+    click_button "Create Post"
 
     expect(page).to have_text("Post was successfully created")
   end

@@ -4,15 +4,11 @@ class Post
   attr_accessor :content, :title
 
   def self.all
-    [
-      new(
-        title: "My awesome post",
-        content: "tl; dr"
-      )
-    ]
+    @@all ||= []
   end
 
   def self.create(attrs)
+    new(attrs).save
   end
 
   def to_param
@@ -20,5 +16,8 @@ class Post
   end
 
   def save
+    self.tap do |post|
+      self.class.all << post
+    end
   end
 end

@@ -4,10 +4,21 @@ class PostsController < ApplicationController
     render locals: { posts: posts }
   end
 
-  def create
+  def new
     post = Post.new
+    render locals: { post: post }
+  end
+
+  def create
+    post = Post.new(post_params)
     post.save
 
     redirect_to post_url(post)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end
