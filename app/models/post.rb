@@ -19,13 +19,26 @@ class Post
     all.find { |post| "#{post.id}" == id }
   end
 
-  def to_param
-    "#{id}"
+  def persisted?
+    persisted || super
   end
 
   def save
     self.id = self.class.count + 1
+    self.persisted = true
     self.class.all << self
     self
   end
+
+  def to_param
+    "#{id}"
+  end
+
+  def update(attrs)
+    assign_attributes(attrs)
+  end
+
+  private
+
+  attr_accessor :persisted
 end

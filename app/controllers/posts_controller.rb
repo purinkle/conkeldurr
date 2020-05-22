@@ -21,6 +21,18 @@ class PostsController < ApplicationController
     render locals: { post: post }
   end
 
+  def edit
+    post = Post.find(params[:id])
+    render locals: { post: post }
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update(post_params)
+
+    redirect_to post_url(post)
+  end
+
   private
 
   def post_params
