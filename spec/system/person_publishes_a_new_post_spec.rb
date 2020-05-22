@@ -10,5 +10,7 @@ RSpec.describe "Person publishes a new post" do
     click_button "Create Post"
 
     expect(page).to have_text("Post was successfully created")
+    expect(page).to have_text("My awesome post")
+    expect(page).to have_text("tl; dr")
   end
 end

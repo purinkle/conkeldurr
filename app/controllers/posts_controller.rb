@@ -16,6 +16,11 @@ class PostsController < ApplicationController
     redirect_to post_url(post)
   end
 
+  def show
+    post = Post.find(params[:id])
+    render locals: { post: post }
+  end
+
   private
 
   def post_params
